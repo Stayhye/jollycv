@@ -152,6 +152,15 @@ else ifneq (,$(filter $(platform), ps3 psl1ght))
 		FLAGS += -D__PSL1GHT__ -I$(PS3DEV)/ppu/include
 	endif
 	
+# PS2
+else ifeq ($(platform), ps2)
+   EXT=a
+   TARGET := $(TARGET_NAME)_libretro_$(platform).$(EXT)
+   CC = mips64r5900el-ps2-elf-gcc$(EXE_EXT)
+   AR = mips64r5900el-ps2-elf-ar$(EXE_EXT)
+   PLATFORM_DEFINES := -DPS2 -G0 -DABGR8888
+   STATIC_LINKING = 1
+	
 # Nintendo Game Cube
 else ifeq ($(platform), ngc)
 	EXT=a
